@@ -39,11 +39,12 @@ public:
 		for (int i = 0; i < size; i++)this->str[i] = other.str[i]; // Побитовое копирование
 		cout << "CopyConst: " << this << endl;
 	}
-	String(const String&& other) {
+	String(String&& other)
+	{
 		this->size = other.size;
 		this->str = other.str;
-		delete[] other.str;
-		cout << "MoveConst: " << this << endl;
+		other.str = nullptr;
+		cout << "MoveConstructor:" << this << endl;
 	}
 	~String() {
 		delete[] this->str;
